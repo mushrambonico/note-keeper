@@ -14,12 +14,23 @@
                 <a href="#">Login</a>
             </nav>
             <div id="content-wrapper">
-                <div id="side-bar"></div>
+                <div id="side-bar">
+                    <form id="new-note-form">
+                        <label for="title">Title:</label>
+                        <input id="title" type="text" name="title">
+                        <br>
+                        <label for="content">Note Content:</label>
+                        <textarea rows="2" cols="25" id="content" name="content"></textarea>
+                        <br>
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
                 <div id="content"></div>
             </div>
             <footer id="main-footer">
                 <h6>Filão, todos os direitos reservados</h6>
             </footer>
         </div>
+        <script src="./script.js"></script>
     </body>
 </html>

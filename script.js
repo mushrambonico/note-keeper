@@ -1,35 +1,50 @@
 const newNoteForm = document.getElementById('new-note-form');
 const newProjectForm = document.getElementById('new-project-form');
-const createProject = function(title, description) {
+const createProject = function(id, title, description) {
+    let noteIdCounter = 0;
     const noteArray = [];
     const addNote = function(title, content) {
-        const newNote = createNote(title, content);
+        const newNote = createNote(id=noteIdCounter, title, content);
         noteArray.push(newNote);
+        noteIdCounter += 1;
         return newNote;
     }
     return {
+        id,
         title,
         description,
         addNote,
     }
 };
-const createNote = function(title, content) {
+const createNote = function(id, title, content) {
     return {
+        id,
         title,
         content,
     }
 };
 const userProjects = (function() {
+    let projectIdCounter = 0;
     const projectArray = [];
     const addProject = function(title, description) {
-        const newProject = createProject(title, description);
+        const newProject = createProject(id=projectIdCounter, title, description);
         projectArray.push(newProject);
+        projectIdCounter += 1;
         return newProject;
-    }
+    };
     const defaultProject = addProject('default', 'default');
+    const getProjectById = function(id) {
+        for (let i = 0; i < projectArray.length; i ++) {
+            if (projectArray[i].id == id) {
+                return projectArray[i];
+            }
+        }
+        return false;
+    };
     return {
         addProject,
         defaultProject,
+        getProjectById,
     }
 })();
 const renderNote = function(note) {
